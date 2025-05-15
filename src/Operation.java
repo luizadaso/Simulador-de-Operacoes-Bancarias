@@ -10,6 +10,8 @@ public class Operation {
 
         String accountData = String.format("""
                 ╔════════════════════════════════╗
+                   Bem vindo(a) à sua conta!
+                
                    Nome do cliente: %s
                    Tipo da conta: %s
                 ╚════════════════════════════════╝;
@@ -20,10 +22,10 @@ public class Operation {
                 ╔═                           ═╗
                    Digite a opção desejada:
                 
-                   1 - Consultar saldo
-                   2 - Realizar transferência
-                   3 - Realizar saque
-                   4 - Sair
+                   1 - Consultar Saldo
+                   2 - Realizar Depósito
+                   3 - Realizar Saque
+                   4 - Sair da Conta
                 ╚═                           ═╝""";
         Scanner reading = new Scanner(System.in);
 
@@ -34,7 +36,7 @@ public class Operation {
             if (option == 1) {
                 String accountBalance = String.format("""
                     ╔════════════════════════════════╗
-                       Saldo da conta: %.2f
+                       Saldo da conta: R$ %.2f
                     ╚════════════════════════════════╝;
                     """, balance);
 
@@ -42,24 +44,32 @@ public class Operation {
             }
 
             if (option == 2) {
-                System.out.println("\nDigite o valor para transferêcia:");
-                double transferAmount = reading.nextInt();
+                System.out.println("\nDigite um valor para depósito:");
+                double depositAmount = reading.nextInt();
 
-                if (transferAmount > balance) {
-                    System.out.println("\n⛌ Saldo insuficiente \n");
+                if (depositAmount > 0) {
+                    balance += depositAmount;
+                    System.out.println("\nDepósito realizado ✔\n");
                 } else {
-                    balance -= transferAmount;
-                    System.out.println("\nTransferência concluída ✔\n");
+                    System.out.println("\nOperação inválida.\n");
                 }
-
             }
 
+            if (option == 3) {
+                System.out.println("\nDigite um valor para saque:");
+                double withdrawalAmount = reading.nextInt();
+
+                if (withdrawalAmount <= 0){
+                    System.out.println("\nOperação inválida.\n");
+                } else if (withdrawalAmount > balance) {
+                    System.out.println("\n⛌ Saldo insuficiente \n");
+                } else {
+                    balance -= withdrawalAmount;
+                    System.out.println("\nSaque concluído ✔\n");
+                }
+            }
         }
-
-
-
-
-
-
+        System.out.println("\nAgradecemos e volte sempre!\n");
+        reading.close();
     }
 }
