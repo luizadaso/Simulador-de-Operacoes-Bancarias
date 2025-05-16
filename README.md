@@ -19,6 +19,15 @@ Ao iniciar, o sistema exibe os dados da conta e oferece um menu de opções.
 - Entrada de dados via Scanner
 - Sem uso de bibliotecas externas – 100% Java puro
 
+## Validações
+
+- Opção de menu válida: Verificação se a opção de menu selecionada é válida.
+- Não vazio: Verificação se a entrada não está vazia antes de tentar convertê-la para um número.
+- Tipo de dado: Verificação se a entrada é um número inteiro válido para a seleção de opções do menu.
+- Formato numérico: Verificação se a entrada é um número decimal válido para depósitos e saques.
+- Valores negativos: Verificação se o valor do depósito é maior que zero e se o valor do saque é maior que zero.
+- Saldo suficiente: Verificação se há saldo suficiente para realizar o saque.
+
 ## Contribua
 1. **Faça um fork do repositório**.
 2. **Crie uma nova branch**:
