@@ -14,7 +14,7 @@ public class Operation {
                 
                    Nome do cliente: %s
                    Tipo da conta: %s
-                ╚════════════════════════════════╝;
+                ╚════════════════════════════════╝
                 """, name, accountType);
         System.out.println(accountData);
 
@@ -37,7 +37,7 @@ public class Operation {
                 String accountBalance = String.format("""
                     ╔════════════════════════════════╗
                        Saldo da conta: R$ %.2f
-                    ╚════════════════════════════════╝;
+                    ╚════════════════════════════════╝
                     """, balance);
 
                 System.out.println(accountBalance);
