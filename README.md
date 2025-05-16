@@ -19,26 +19,31 @@ Ao iniciar, o sistema exibe os dados da conta e oferece um menu de opções.
 - Entrada de dados via Scanner
 - Sem uso de bibliotecas externas – 100% Java puro
 
-## Como Executar
+## Contribuindo
+1. **Faça um fork do repositório**.
+2. **Crie uma nova branch**:
+    ```sh
+    git checkout -b feature/nome-da-sua-feature
+    ```
+3. **Faça suas alterações**.
+4. **Commit suas alterações**:
+    ```sh
+    git commit -m "feat: adicionar descrição da sua feature"
+    ```
+5. **Envie para a branch**:
+    ```sh
+    git push origin feature/nome-da-sua-feature
+    ```
+6. **Crie um Pull Request**.
 
-1. Compile o arquivo Java:
-
-```bash
-javac Operation.java
-```
-
-2. Execute o programa:
-
-```bash
-java Operation
-```
-Certifique-se de que o JDK está instalado e configurado corretamente no seu sistema.
+## Licença
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## Autora
 
 Para mais informações, sinta-se à vontade para entrar em contato:
 
-<div align="left">
+<div>
   <img src="https://github.com/user-attachments/assets/57cac2a3-49b1-4a0a-aef3-e968523971eb" width="15%" alt="autora" />
 </div>
 
