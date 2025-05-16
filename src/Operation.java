@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Operation {
@@ -6,9 +5,9 @@ public class Operation {
         String name = "Ana Luiza ✴";
         String accountType = "Corrente";
         double balance = 2864.23;
-        String invalidOperation = "\nOperação inválida.\n";
 
         int option = 0;
+        String invalidOperation = "\nOperação inválida.\n";
 
         String accountData = String.format("""
                 ╔════════════════════════════════╗
@@ -33,10 +32,8 @@ public class Operation {
 
         while (option != 4) {
             System.out.println(menu);
-            String input = reading.nextLine().trim();
-            try {
-                option = Integer.parseInt(input);
-            } catch (NumberFormatException e) {
+            option = (int) validateInput(reading);
+            if (option == -1) {
                 System.out.println(invalidOperation);
                 continue;
             }
@@ -53,44 +50,25 @@ public class Operation {
 
                 case 2:
                     System.out.println("\nDigite um valor para depósito:");
-                    input = reading.nextLine().trim();
-                    if (input.isEmpty()) {
+                    double depositAmount = validateInput(reading);
+                    if (depositAmount == -1) {
                         System.out.println(invalidOperation);
-                        break;
-                    }
-                    try {
-                        double depositAmount = Double.parseDouble(input);
-                        if (depositAmount > 0) {
-                            balance += depositAmount;
-                            System.out.println("\nDepósito realizado ✔\n");
-                        } else {
-                            System.out.println(invalidOperation);
-                        }
-                    } catch (NumberFormatException e) {
-                        System.out.println(invalidOperation);
+                    } else {
+                        balance += depositAmount;
+                        System.out.println("\nDepósito realizado ✔\n");
                     }
                     break;
 
                 case 3:
                     System.out.println("\nDigite um valor para saque:");
-                    input = reading.nextLine().trim();
-                    if (input.isEmpty()) {
+                    double withdrawalAmount = validateInput(reading);
+                    if (withdrawalAmount == -1) {
                         System.out.println(invalidOperation);
-                        break;
-                    }
-                    try {
-                        double withdrawalAmount = Double.parseDouble(input);
-                        if (withdrawalAmount <= 0) {
-                            System.out.println(invalidOperation);
-                        } else if (withdrawalAmount > balance) {
-                            System.out.println("\n⛌ Saldo insuficiente \n");
-                        } else {
-                            balance -= withdrawalAmount;
-                            System.out.println("\nSaque concluído ✔\n");
-                        }
-                    } catch (InputMismatchException e) {
-                        System.out.println(invalidOperation);
-                        reading.next();
+                    } else if (withdrawalAmount > balance) {
+                        System.out.println("\n⛌ Saldo insuficiente \n");
+                    } else {
+                        balance -= withdrawalAmount;
+                        System.out.println("\nSaque concluído ✔\n");
                     }
                     break;
 
@@ -99,11 +77,27 @@ public class Operation {
                     break;
 
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println(invalidOperation);
                     break;
             }
         }
         System.out.println("\nAgradecemos e volte sempre!\n");
         reading.close();
+    }
+
+    private static double validateInput(Scanner reading) {
+        String input = reading.nextLine().trim();
+        if (input.isEmpty()) {
+            return -1;
+        }
+        try {
+            double value = Double.parseDouble(input);
+            if (value <= 0) {
+                return -1;
+            }
+            return value;
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 }
