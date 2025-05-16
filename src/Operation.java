@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Operation {
@@ -5,6 +6,7 @@ public class Operation {
         String name = "Ana Luiza ✴";
         String accountType = "Corrente";
         double balance = 2864.23;
+        String invalidOperation = "\nOperação inválida.\n";
 
         int option = 0;
 
@@ -31,42 +33,65 @@ public class Operation {
 
         while (option != 4) {
             System.out.println(menu);
-            option = reading.nextInt();
-
-            if (option == 1) {
-                String accountBalance = String.format("""
-                    ╔════════════════════════════════╗
-                       Saldo da conta: R$ %.2f
-                    ╚════════════════════════════════╝
-                    """, balance);
-
-                System.out.println(accountBalance);
+            try {
+                option = reading.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println(invalidOperation);
+                reading.next(); // Limpa a entrada inválida
+                continue;
             }
 
-            if (option == 2) {
-                System.out.println("\nDigite um valor para depósito:");
-                double depositAmount = reading.nextInt();
+            switch (option) {
+                case 1:
+                    String accountBalance = String.format("""
+                ╔════════════════════════════════╗
+                   Saldo da conta: R$ %.2f
+                ╚════════════════════════════════╝
+                """, balance);
+                    System.out.println(accountBalance);
+                    break;
 
-                if (depositAmount > 0) {
-                    balance += depositAmount;
-                    System.out.println("\nDepósito realizado ✔\n");
-                } else {
-                    System.out.println("\nOperação inválida.\n");
-                }
-            }
+                case 2:
+                    System.out.println("\nDigite um valor para depósito:");
+                    try {
+                        double depositAmount = reading.nextDouble();
+                        if (depositAmount > 0) {
+                            balance += depositAmount;
+                            System.out.println("\nDepósito realizado ✔\n");
+                        } else {
+                            System.out.println(invalidOperation);
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println(invalidOperation);
+                        reading.next(); // Limpa a entrada inválida
+                    }
+                    break;
 
-            if (option == 3) {
-                System.out.println("\nDigite um valor para saque:");
-                double withdrawalAmount = reading.nextInt();
+                case 3:
+                    System.out.println("\nDigite um valor para saque:");
+                    try {
+                        double withdrawalAmount = reading.nextDouble();
+                        if (withdrawalAmount <= 0) {
+                            System.out.println(invalidOperation);
+                        } else if (withdrawalAmount > balance) {
+                            System.out.println("\n⛌ Saldo insuficiente \n");
+                        } else {
+                            balance -= withdrawalAmount;
+                            System.out.println("\nSaque concluído ✔\n");
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println(invalidOperation);
+                        reading.next(); // Limpa a entrada inválida
+                    }
+                    break;
 
-                if (withdrawalAmount <= 0){
-                    System.out.println("\nOperação inválida.\n");
-                } else if (withdrawalAmount > balance) {
-                    System.out.println("\n⛌ Saldo insuficiente \n");
-                } else {
-                    balance -= withdrawalAmount;
-                    System.out.println("\nSaque concluído ✔\n");
-                }
+                case 4:
+                    System.out.println("Saindo...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
             }
         }
         System.out.println("\nAgradecemos e volte sempre!\n");
