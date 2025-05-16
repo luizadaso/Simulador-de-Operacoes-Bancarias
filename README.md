@@ -19,7 +19,7 @@ Ao iniciar, o sistema exibe os dados da conta e oferece um menu de opções.
 - Entrada de dados via Scanner
 - Sem uso de bibliotecas externas – 100% Java puro
 
-## Contribuindo
+## Contribua
 1. **Faça um fork do repositório**.
 2. **Crie uma nova branch**:
     ```sh
@@ -37,7 +37,7 @@ Ao iniciar, o sistema exibe os dados da conta e oferece um menu de opções.
 6. **Crie um Pull Request**.
 
 ## Licença
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](https://github.com/luizadaso/Simulador-de-Operacoes-Bancarias/blob/master/LICENSE.txt) para mais detalhes.
 
 ## Autora
 
