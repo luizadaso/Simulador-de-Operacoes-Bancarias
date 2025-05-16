@@ -33,11 +33,11 @@ public class Operation {
 
         while (option != 4) {
             System.out.println(menu);
+            String input = reading.nextLine().trim();
             try {
-                option = reading.nextInt();
-            } catch (InputMismatchException e) {
+                option = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
                 System.out.println(invalidOperation);
-                reading.next(); // Limpa a entrada inválida
                 continue;
             }
 
@@ -53,24 +53,33 @@ public class Operation {
 
                 case 2:
                     System.out.println("\nDigite um valor para depósito:");
+                    input = reading.nextLine().trim();
+                    if (input.isEmpty()) {
+                        System.out.println(invalidOperation);
+                        break;
+                    }
                     try {
-                        double depositAmount = reading.nextDouble();
+                        double depositAmount = Double.parseDouble(input);
                         if (depositAmount > 0) {
                             balance += depositAmount;
                             System.out.println("\nDepósito realizado ✔\n");
                         } else {
                             System.out.println(invalidOperation);
                         }
-                    } catch (InputMismatchException e) {
+                    } catch (NumberFormatException e) {
                         System.out.println(invalidOperation);
-                        reading.next(); // Limpa a entrada inválida
                     }
                     break;
 
                 case 3:
                     System.out.println("\nDigite um valor para saque:");
+                    input = reading.nextLine().trim();
+                    if (input.isEmpty()) {
+                        System.out.println(invalidOperation);
+                        break;
+                    }
                     try {
-                        double withdrawalAmount = reading.nextDouble();
+                        double withdrawalAmount = Double.parseDouble(input);
                         if (withdrawalAmount <= 0) {
                             System.out.println(invalidOperation);
                         } else if (withdrawalAmount > balance) {
@@ -81,7 +90,7 @@ public class Operation {
                         }
                     } catch (InputMismatchException e) {
                         System.out.println(invalidOperation);
-                        reading.next(); // Limpa a entrada inválida
+                        reading.next();
                     }
                     break;
 
