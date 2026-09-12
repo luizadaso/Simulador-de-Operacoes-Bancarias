@@ -32,16 +32,25 @@ public class Operation {
 
         while (option != 4) {
             System.out.println(menu);
-            option = (int) validateInput(reading);
-            if (option == -1) {
+
+            double inputOption = validateInput(reading);
+
+            if (inputOption == -1
+                    || inputOption != (int) inputOption
+                    || inputOption < 1
+                    || inputOption > 4) {
+
                 System.out.println(invalidOperation);
                 continue;
             }
 
+            // Só converte para int depois que a entrada foi validada
+            option = (int) inputOption;
+
             switch (option) {
                 case 1:
                     String accountBalance = String.format("""
-                ╔════════════════════════════════╗
+                ╔════════════════════════════════╗2
                    Saldo da conta: R$ %.2f
                 ╚════════════════════════════════╝
                 """, balance);
