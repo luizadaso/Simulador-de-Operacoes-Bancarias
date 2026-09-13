@@ -50,7 +50,7 @@ public class Operation {
             switch (option) {
                 case 1:
                     String accountBalance = String.format("""
-                ╔════════════════════════════════╗2
+                ╔════════════════════════════════╗
                    Saldo da conta: R$ %.2f
                 ╚════════════════════════════════╝
                 """, balance);
