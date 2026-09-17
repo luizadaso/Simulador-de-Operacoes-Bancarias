@@ -9,14 +9,14 @@ public class Operation {
         int option = 0;
         String invalidOperation = "\nOperação inválida.\n";
 
-        String accountData = String.format("""
+        String accountData = """
                 ╔════════════════════════════════╗
-                   Bem vindo(a) à sua conta!
-                
-                   Nome do cliente: %s
-                   Tipo da conta: %s
+                    Bem vindo(a) à sua conta!
+        
+                    Nome do cliente: %s
+                    Tipo da conta: %s
                 ╚════════════════════════════════╝
-                """, name, accountType);
+        """.formatted(name, accountType);
         System.out.println(accountData);
 
         String menu = """
@@ -49,11 +49,11 @@ public class Operation {
 
             switch (option) {
                 case 1:
-                    String accountBalance = String.format("""
+                    String accountBalance = """
                 ╔════════════════════════════════╗
                    Saldo da conta: R$ %.2f
                 ╚════════════════════════════════╝
-                """, balance);
+                """.formatted(balance);
                     System.out.println(accountBalance);
                     break;
 
