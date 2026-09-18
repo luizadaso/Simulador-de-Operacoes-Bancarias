@@ -48,46 +48,46 @@ public class Operation {
             option = (int) inputOption;
 
             switch (option) {
-                case 1:
+                case 1 -> {
                     String accountBalance = """
-                ╔════════════════════════════════╗
-                   Saldo da conta: R$ %.2f
-                ╚════════════════════════════════╝
-                """.formatted(balance);
+                            ╔════════════════════════════════╗
+                               Saldo da conta: R$ %.2f
+                            ╚════════════════════════════════╝
+                            """.formatted(balance);
                     System.out.println(accountBalance);
-                    break;
+                }
 
-                case 2:
-                    System.out.println("\nDigite um valor para depósito:");
-                    double depositAmount = validateInput(reading);
-                    if (depositAmount == -1) {
-                        System.out.println(invalidOperation);
-                    } else {
-                        balance += depositAmount;
-                        System.out.println("\nDepósito realizado ✔\n");
-                    }
-                    break;
+            case 2 -> {
+                System.out.println("\nDigite um valor para depósito:");
 
-                case 3:
-                    System.out.println("\nDigite um valor para saque:");
-                    double withdrawalAmount = validateInput(reading);
-                    if (withdrawalAmount == -1) {
-                        System.out.println(invalidOperation);
-                    } else if (withdrawalAmount > balance) {
-                        System.out.println("\n⛌ Saldo insuficiente \n");
-                    } else {
-                        balance -= withdrawalAmount;
-                        System.out.println("\nSaque concluído ✔\n");
-                    }
-                    break;
-
-                case 4:
-                    System.out.println("Saindo...");
-                    break;
-
-                default:
+                double depositAmount = validateInput(reading);
+                if (depositAmount == -1) {
                     System.out.println(invalidOperation);
-                    break;
+                } else {
+                    balance += depositAmount;
+                    System.out.println("\nDepósito realizado ✔\n");
+                }
+            }
+
+            case 3 -> {
+                System.out.println("\nDigite um valor para saque:");
+
+            double withdrawalAmount = validateInput(reading);
+            if (withdrawalAmount == -1) {
+                System.out.println(invalidOperation);
+            } else if (withdrawalAmount > balance) {
+                System.out.println("\n⛌ Saldo insuficiente \n");
+            } else {
+                balance -= withdrawalAmount;
+                System.out.println("\nSaque concluído ✔\n");
+            }
+        }
+
+                case 4 -> {
+                    System.out.println("Saindo...");
+                }
+
+                default -> System.out.println(invalidOperation);
             }
         }
         System.out.println("\nAgradecemos e volte sempre!\n");
