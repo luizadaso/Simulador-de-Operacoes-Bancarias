@@ -12,38 +12,70 @@ Ao iniciar, o sistema exibe os dados da conta e oferece um menu de opções.
 ![image](https://github.com/user-attachments/assets/a2813b32-f8a2-4812-a394-ccc4b0a5ade0)
 ![image](https://github.com/user-attachments/assets/5b4d057b-6092-41a3-bbfe-0d17d4581112)
 
-## Tecnologias
+## Tecnologias & Ferramentas
 
 - Java 21
 - JDK (Java Development Kit)
 - Entrada de dados via Scanner
 - Sem uso de bibliotecas externas – 100% Java puro
+- Git
 
-## Validações
+## Usabilidade
 
-- Opção de menu válida: Verificação se a opção de menu selecionada é válida.
-- Não vazio: Verificação se a entrada não está vazia antes de tentar convertê-la para um número.
-- Tipo de dado: Verificação se a entrada é um número inteiro válido para a seleção de opções do menu.
-- Formato numérico: Verificação se a entrada é um número decimal válido para depósitos e saques.
-- Valores negativos: Verificação se o valor do depósito é maior que zero e se o valor do saque é maior que zero.
-- Saldo suficiente: Verificação se há saldo suficiente para realizar o saque.
+A aplicação oferece uma interação simples e intuitiva através do terminal, permitindo que o usuário navegue pelas funcionalidades utilizando um menu numérico.
 
-## Contribua
-1. **Faça um fork do repositório**.
-2. **Crie uma nova branch**:
-    ```sh
-    git checkout -b feature/nome-da-sua-feature
-    ```
-3. **Faça suas alterações**.
-4. **Commit suas alterações**:
-    ```sh
-    git commit -m "feat: adicionar descrição da sua feature"
-    ```
-5. **Envie para a branch**:
-    ```sh
-    git push origin feature/nome-da-sua-feature
-    ```
-6. **Crie um Pull Request**.
+Foram implementadas validações para garantir a integridade das operações, impedindo cenários como:
+
+- Inserção de texto em campos numéricos;
+- Valores negativos ou zerados;
+- Opções inexistentes no menu;
+- Tentativas de saque com saldo insuficiente;
+- Entradas vazias.
+
+A experiência do usuário foi aprimorada com mensagens claras de sucesso, erro e confirmação das operações realizadas.
+
+## Funcionalidades
+
+### Gerenciamento de Conta
+
+- Exibição dos dados da conta;
+- Consulta do saldo disponível em tempo real;
+- Encerramento seguro da sessão bancária.
+
+### Operações Financeiras
+
+- Realização de depósitos;
+- Atualização automática do saldo após depósito;
+- Realização de saques;
+- Validação de saldo disponível antes da operação;
+- Atualização automática do saldo após saque.
+
+### Validação de Dados
+
+- Verificação de entradas vazias;
+- Tratamento de valores não numéricos;
+- Restrição de valores menores ou iguais a zero;
+- Validação das opções do menu;
+- Tratamento de erros sem interrupção do programa.
+
+### Controle de Fluxo
+
+- Execução contínua da aplicação até solicitação de saída;
+- Gerenciamento de estados por meio de estruturas condicionais e de repetição;
+- Reaproveitamento de lógica de validação através de métodos específicos.
+
+---
+
+### Conceitos Aplicados
+
+- Programação Orientada a Objetos (POO)
+- Estruturas condicionais (`if`, `else`, `switch`)
+- Estruturas de repetição (`while`)
+- Encapsulamento de regras de validação
+- Manipulação de entrada e saída de dados
+- Tratamento de exceções (`try-catch`)
+- Modularização de código
+- Reutilização de métodos
 
 ## Licença
 Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](https://github.com/luizadaso/Simulador-de-Operacoes-Bancarias/blob/master/LICENSE.txt) para mais detalhes.
